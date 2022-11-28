@@ -1,5 +1,9 @@
 body{
+    position: absolute;
+    display: flex;
     height: 100%;
     width: 100%;
     background-color: gray;
+    justify-content: center;
+    align-content: center;
 }

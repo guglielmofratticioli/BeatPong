@@ -1,28 +1,64 @@
-let [_game, _background, _HUD, _BAR, _BALL] = make_Ui();
-_settingUI = make_Setting()
+// Game Model 
+const FPS = 60;
+const box = {
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+    color: "black",
+} 
+const paddle = {
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+    color: "black",
+} 
+const ball = {
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+    color: "black",
+} 
 
-_game.child = _settingUI
+                    //                  
 
+make_app(document.body);
 
+/**@param {Node} _father */
+function make_app(_father){
 
-function make_Ui(){
     let _game = document.createElement("div");
-    _game.id = "game"; 
+    _game.style.display = "flex";
+    _game.style.margin = "10%";
+    _game.style.aspectRatio = "3/4";
+    _game.style.background = "white";
+    _game.style.justifyContent = "center"; 
 
-    let _background = make_Background(_game);
-    let _HUD = make_HUD(_game);
-    let _BAR = make_Bar(_game,barX,barY);
-    let _BALL = make_Ball(_game,ballX,ballY);
-    return [_game, _background, _HUD, _BAR, _BALL]
+    let _canvas = document.createElement("canvas"); 
+    _canvas.style.margin = "10%";
+    _canvas.style.aspectRatio = "3/4";
+    _canvas.style.border = "1px";
+    _canvas.style.borderStyle = "solid";
+
+    setInterval(game, 1000/FPS);
+
+
+    _game.appendChild(_canvas); 
+    _father.appendChild(_game);
+    return _game; 
+
 }
 
-function make_Background(father){
-    let _body = document.body; 
-    _background.concat(_game);
+function game(){
 
-    return _background;
+
+} 
+function update(){
+
+}
+function render(){
+
 }
 
-function make_HUD(){}
-function make_Bar(){}
-function make_Ball(){}
