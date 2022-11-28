@@ -6,7 +6,7 @@ function init_app(_father){
 
     let _game = document.createElement("div");
     _game.style.display = "flex";
-    _game.style.height = "90%";
+    _game.style.margin = "10%";
     _game.style.aspectRatio = "3/4";
     _game.style.background = "white";
     _game.style.justifyContent = "center"; 
