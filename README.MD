@@ -1,5 +1,9 @@
 # BeatPong
 a rythm game based on original pong :)
 
+Working site -> https://guglielmofratticioli.github.io/BeatPong/
 
-copy from url(https://codepen.io/harryheman/pen/gOaXYQZ)
+
+inspired architecture -> https://codepen.io/harryheman/pen/gOaXYQZ
+
+
