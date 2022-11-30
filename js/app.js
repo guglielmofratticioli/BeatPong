@@ -14,9 +14,9 @@ function init_app(_father){
 
     _father.appendChild(_game);
     let _canvas = document.createElement("canvas"); 
-        _canvas.style.objectFit = "cover";
-        _canvas.style.border = "1px";
-        _canvas.style.borderStyle = "solid";
+        //_canvas.style.objectFit = "cover";
+       // _canvas.style.border = "1px";
+       // _canvas.style.borderStyle = "solid";
     _game.appendChild(_canvas); 
     
     return [_game,_canvas]; 
