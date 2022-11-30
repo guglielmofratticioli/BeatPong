@@ -68,7 +68,7 @@ function update(){
 function render(){
    
     setCanvasSize(_canvas);
-    let h = Math_canvas.height;
+    let h = _canvas.height;
     let w = _canvas.width;
     paddle.height = .0125*h;
     paddle.width = .2*w;
