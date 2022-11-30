@@ -52,6 +52,7 @@ const ball = {
                     //                  
 
             
+ setCanvasSize(_canvas);
 const $ = _canvas.getContext("2d");
 
 document.body.addEventListener("mousemove", movePaddle);
@@ -67,7 +68,6 @@ function update(){
 }   
 function render(){
    
-    setCanvasSize(_canvas);
     let h = _canvas.height;
     let w = _canvas.width;
     paddle.height = .0125*h;
@@ -79,7 +79,7 @@ function render(){
     $.fillRect(paddle.x,paddle.y,paddle.width,paddle.height);
 }
 
-//document.body.on("resize", function(){ render(); });
+document.body.addEventListener("resize", render);
 
 function setCanvasSize(canvas) {
     console.log("resize");
