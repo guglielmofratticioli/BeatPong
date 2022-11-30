@@ -52,9 +52,8 @@ const ball = {
                     //                  
 
             
- setCanvasSize(_canvas);
+ 
 const $ = _canvas.getContext("2d");
-
 document.body.addEventListener("mousemove", movePaddle);
 
 setInterval(game, 1000/FPS);
@@ -67,11 +66,9 @@ function update(){
   
 }   
 function render(){
-   
-    let h = _canvas.height;
-    let w = _canvas.width;
-    paddle.height = .0125*h;
-    paddle.width = .2*w;
+    setCanvasSize();
+    paddle.height = .0125*_canvas.height;
+    paddle.width = .2*_canvas.width;
 
     $.clearRect(0, 0, _canvas.width, _canvas.height);
     // draw paddle
@@ -79,16 +76,16 @@ function render(){
     $.fillRect(paddle.x,paddle.y,paddle.width,paddle.height);
 }
 
-document.body.addEventListener("resize", render);
+//document.addEventListener("resize", setCanvasSize);
 
-function setCanvasSize(canvas) {
+function setCanvasSize() {
     console.log("resize");
-    var parent = canvas.parentNode,
+    var parent = _canvas.parentNode,
         styles = getComputedStyle(parent),
         w = parseInt(styles.getPropertyValue("width"), 10),
         h = parseInt(styles.getPropertyValue("height"), 10);
-    canvas.width = w;
-    canvas.height = h;
+    _canvas.width = w;
+    _canvas.height = h;
     console.log([w,h]);
 }
 
