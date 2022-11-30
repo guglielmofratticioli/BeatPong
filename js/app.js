@@ -78,7 +78,7 @@ function render(){
     $.fillStyle = "black"; 
     $.fillRect(paddle.x,paddle.y,paddle.width,paddle.height);
 }
-_game.addEventListener("resize", render(););
+_game.on("resize", function(){ render(); });
 
 function setCanvasSize(canvas) {
     var parent = canvas.parentNode,
