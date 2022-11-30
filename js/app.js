@@ -79,7 +79,7 @@ function render(){
     $.fillRect(paddle.x,paddle.y,paddle.width,paddle.height);
 }
 
-_game.on("resize", function(){ render(); });
+//document.body.on("resize", function(){ render(); });
 
 function setCanvasSize(canvas) {
     console.log("resize");
