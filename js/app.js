@@ -68,7 +68,7 @@ function update(){
 function render(){
    
     setCanvasSize(_canvas);
-    let h = _canvas.height;
+    let h = Math_canvas.height;
     let w = _canvas.width;
     paddle.height = .0125*h;
     paddle.width = .2*w;
@@ -82,6 +82,7 @@ function render(){
 _game.on("resize", function(){ render(); });
 
 function setCanvasSize(canvas) {
+    console.log("resize");
     var parent = canvas.parentNode,
         styles = getComputedStyle(parent),
         w = parseInt(styles.getPropertyValue("width"), 10),
