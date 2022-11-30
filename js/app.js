@@ -89,6 +89,7 @@ function setCanvasSize(canvas) {
         h = parseInt(styles.getPropertyValue("height"), 10);
     canvas.width = w;
     canvas.height = h;
+    console.log([w,h]);
 }
 
 function movePaddle(event){
