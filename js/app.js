@@ -80,10 +80,10 @@ function render(){
 
 function setCanvasSize() {
     console.log("resize");
-    var parent = _canvas.parentNode,
-        styles = getComputedStyle(parent),
-        w = parseInt(styles.getPropertyValue("width"), 10),
-        h = parseInt(styles.getPropertyValue("height"), 10);
+    let parent = _canvas.parentNode;
+    let styles = getComputedStyle(parent);
+    const w = parseInt(styles.getPropertyValue("width"), 10);
+    const h = parseInt(styles.getPropertyValue("height"), 10);
     _canvas.width = w;
     _canvas.height = h;
     console.log([w,h]);
