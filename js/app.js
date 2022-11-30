@@ -1,5 +1,4 @@
 
-
 let [_game,_canvas] = init_app(document.body);
 
 /**@param {Node} _father */
@@ -55,7 +54,7 @@ const ball = {
  
 const $ = _canvas.getContext("2d");
 document.body.addEventListener("mousemove", movePaddle);
-
+setCanvasSize();
 setInterval(game, 1000/FPS);
 
 function game(){
@@ -66,7 +65,6 @@ function update(){
   
 }   
 function render(){
-    setCanvasSize();
     paddle.height = .0125*_canvas.height;
     paddle.width = .2*_canvas.width;
 
@@ -76,7 +74,7 @@ function render(){
     $.fillRect(paddle.x,paddle.y,paddle.width,paddle.height);
 }
 
-//document.addEventListener("resize", setCanvasSize);
+window.addEventListener("resize", setCanvasSize);
 
 function setCanvasSize() {
     console.log("resize");
