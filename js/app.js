@@ -77,7 +77,7 @@ function render(){
     $.fillStyle = "black"; 
     $.fillRect(paddle.x,paddle.y,paddle.width,paddle.height);
 }
-$(_game).on("resize", render);
+_game.on("resize", render);
 function setCanvasSize(canvas) {
     var parent = canvas.parentNode,
         styles = getComputedStyle(parent),
