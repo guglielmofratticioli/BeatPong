@@ -41,10 +41,12 @@ const paddle = {
     color: "black",
 } 
 const ball = {
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0,
+    x: _canvas.width/2,
+    y: _canvas.height/2,
+    r: 10,
+    cx: 1,
+    cy: 1,
+    speed: 1,
     color: "black",
 } 
 
@@ -60,18 +62,64 @@ setInterval(game, 1000/FPS);
 function game(){
     update();
     render();
-} 
+}
+function collision(b, p) {
+    p.top = p.y;
+    p.bottom = p.y + p.height;
+    p.left = p.x;
+    p.right = p.x + p.width;
+
+    b.top = b.y - b.r;
+    b.bottom = b.y + b.r;
+    b.left = b.x - b.r;
+    b.right = b.x + b.r;
+
+    return (
+        p.left < b.right && p.top < b.bottom && p.right > b.left && p.bottom > b.top
+    );
+}
 function update(){
-  
+    ball.x += ball.cx;
+    ball.y += ball.cy;
+    if (ball.y - ball.r < 0 || ball.y + ball.r > _canvas.height) {
+        ball.cy = -ball.cy;
+    }
+    if (ball.x - ball.r < 0 || ball.x + ball.r > -_canvas.width) {
+        ball.cx = -ball.cx;
+    }
+
+    if (collision(ball, paddle)) {
+        let collidePoint =
+            (ball.x - (paddle.x + paddle.width / 2)) / (paddle.width / 2);
+
+        let angleRad = (Math.PI / 4) * collidePoint;
+
+        let directionx = ball.x + ball.x < _canvas.width / 2 ? 1 : -1;
+        let directiony = ball.y + ball.r < _canvas.height / 2 ? 1 : -1;
+        ball.cx = directionx * ball.speed * Math.sin(angleRad);
+        ball.cy = directiony * ball.speed * Math.cos(angleRad);
+
+        //ball.speed += 0.1;
+
+    }
+
 }   
 function render(){
     paddle.height = .0125*_canvas.height;
     paddle.width = .2*_canvas.width;
 
+
+
     $.clearRect(0, 0, _canvas.width, _canvas.height);
     // draw paddle
     $.fillStyle = "black"; 
     $.fillRect(paddle.x,paddle.y,paddle.width,paddle.height);
+
+    //draw ball
+    $.beginPath();
+    $.arc(ball.x, ball.y, ball.r, 0, 2 * Math.PI);
+    $.closePath();
+    $.fill();
 }
 
 window.addEventListener("resize", setCanvasSize);
@@ -102,4 +150,3 @@ function movePaddle(event){
 
 
 }
-
