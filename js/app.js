@@ -44,9 +44,9 @@ const ball = {
     x: _canvas.width/2,
     y: _canvas.height/2,
     r: 10,
-    cx: 4,
-    cy: 4,
-    speed: 5,
+    cx: 8,
+    cy: 8,
+    speed: 10,
     color: "black",
 } 
 
@@ -109,9 +109,9 @@ function update(){
 
         let directiony = ball.y + ball.r < _canvas.height / 2 ? 1 : -1;
         ball.cx =  ball.speed * Math.sin(angleRad);
-        ball.cy = directiony * ball.speed * Math.cos(angleRad);
+        ball.cy = -ball.cy; //directiony * ball.speed * Math.cos(angleRad);
 
-        ball.speed += 0.1
+        ball.cx *= 1.5;
 
     }
 
