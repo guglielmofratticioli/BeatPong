@@ -156,9 +156,9 @@ function movePaddle(event){
         else if(dx > rect.width - paddle.width) { paddle.x = rect.width - paddle.width;}
         else    paddle.x = event.clientX - rect.x;
     
-    //if(dy < 0 ) paddle.y = 0;
-    //    else if(dy > rect.height - paddle.height) { paddle.y = rect.height - paddle.height;}
-     //   else    paddle.y = event.clientY - rect.y;
+    if(dy < 0 ) paddle.y = 0;
+        else if(dy > rect.height - paddle.height) { paddle.y = rect.height - paddle.height;}
+        else    paddle.y = event.clientY - rect.y;
 
 
 }
