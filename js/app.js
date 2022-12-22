@@ -13,9 +13,9 @@ function init_app(_father){
 
     _father.appendChild(_game);
     let _canvas = document.createElement("canvas"); 
-        _canvas.style.objectFit = "cover";
-        _canvas.style.border = "1px";
-        _canvas.style.borderStyle = "solid";
+        //_canvas.style.objectFit = "cover";
+       // _canvas.style.border = "1px";
+       // _canvas.style.borderStyle = "solid";
     _game.appendChild(_canvas); 
     
     return [_game,_canvas]; 
@@ -35,7 +35,7 @@ const box = {
 } 
 const paddle = {
     x: 0,
-    y: 0,
+    y: 455,
     width: 0,
     height: 0,
     color: "black",
@@ -46,11 +46,11 @@ const ball = {
     r: 10,
     cx: 8,
     cy: 8,
-    speed: 8,
+    speed: 10,
     color: "black",
 } 
 
-
+                    //                  
 
             
  
@@ -97,7 +97,7 @@ function update(){
         ball.cy = -ball.cy;
     }
     if(ball.y + ball.r > _canvas.height){
-        ball.cy = -ball.cy;
+        resetBall();
     }
 
 
@@ -109,10 +109,9 @@ function update(){
 
         let directiony = ball.y + ball.r < _canvas.height / 2 ? 1 : -1;
         ball.cx =  ball.speed * Math.sin(angleRad);
-        ball.cy = directiony * ball.speed * Math.cos(angleRad);
-        //ball.cx = ball.cx;
-        //ball.cy = - ball.cy;
-        ball.speed += 0.1;
+        ball.cy = -ball.cy; //directiony * ball.speed * Math.cos(angleRad);
+
+        ball.cx *= 1.5;
 
     }
 
@@ -151,15 +150,15 @@ function setCanvasSize() {
 function movePaddle(event){
     let rect = _canvas.getBoundingClientRect();
     let dx = event.clientX - rect.x; 
-    let dy = event.clientY - rect.y;
+    //let dy = event.clientY - rect.y;
 
     if(dx < 0 ) paddle.x = 0; 
         else if(dx > rect.width - paddle.width) { paddle.x = rect.width - paddle.width;}
         else    paddle.x = event.clientX - rect.x;
     
-    /*if(dy < 0 ) paddle.y = 0;
-       else if(dy > rect.height - paddle.height) { paddle.y = rect.height - paddle.height;}
-        else    paddle.y = event.clientY - rect.y;*/
+    if(dy < 0 ) paddle.y = 0;
+        else if(dy > rect.height - paddle.height) { paddle.y = rect.height - paddle.height;}
+        else    paddle.y = event.clientY - rect.y;
 
 
 }
