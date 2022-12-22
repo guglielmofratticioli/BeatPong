@@ -36,21 +36,21 @@ const p1 = {
     color: "black",
 }
 const p2 = {
-    x: 0,
+    x: .56*_canvas.width,
     y: 0,
     width: 0,
     height: 0,
     color: "black",
 }
 const p3 = {
-    x: 0,
+    x: 1.12*_canvas.width,
     y: 0,
     width: 0,
     height: 0,
     color: "black",
 }
 const p4 = {
-    x: 0,
+    x: 1.68*_canvas.width,
     y: 0,
     width: 0,
     height: 0,
@@ -143,18 +143,30 @@ function render(){
     paddle.height = .0125*_canvas.height;
     paddle.width = .2*_canvas.width;
 
-    p1.height = .0125*_canvas.height*2;
-    p1.width = .2*_canvas.width;
-    p2.height = .0125*_canvas.height;
-    p2.width = .2*_canvas.width;
-    p3.height = .0125*_canvas.height;
-    p3.width = .2*_canvas.width;
-    p4.height = .0125*_canvas.height;
-    p4.width = .2*_canvas.width;
+    p1.height = .15*_canvas.height;
+    p1.width = .25*_canvas.width;
+    p2.height = .15*_canvas.height;
+    p2.width = .25*_canvas.width;
+    p3.height = .15*_canvas.height;
+    p3.width = .25*_canvas.width;
+    p4.height = .15*_canvas.height;
+    p4.width = .25*_canvas.width;
 
 
 
     $.clearRect(0, 0, _canvas.width, _canvas.height);
+
+    // draw patterns
+    $.fillStyle = "blue";
+    $.fillRect(p1.x,p1.y,p1.width,p1.height);
+    $.fillStyle = "red";
+    $.fillRect(p2.x,p2.y,p2.width,p2.height);
+    $.fillStyle = "yellow";
+    $.fillRect(p3.x,p3.y,p3.width,p3.height);
+    $.fillStyle = "green";
+    $.fillRect(p4.x,p4.y,p4.width,p4.height);
+
+
     // draw paddle
     $.fillStyle = "black"; 
     $.fillRect(paddle.x,paddle.y,paddle.width,paddle.height);
@@ -165,14 +177,7 @@ function render(){
     $.closePath();
     $.fill();
 
-    // draw patterns
-    //$.fillStyle = "black";
-    $.fillRect(p1.x,p1.y,p1.width,p1.height);
-    $.fillStyle = "red";
-    $.fillRect(p2.x,p2.y,p2.width,p2.height);
 
-    $.fillRect(p3.x,p3.y,p3.width,p3.height);
-    $.fillRect(p4.x,p4.y,p4.width,p4.height);
 
 }
 
